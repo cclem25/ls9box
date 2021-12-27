@@ -1,0 +1,150 @@
+.\" Formater ce fichier par la commande :
+.\" groff -man -Tlatin1 -m www prout.1  (si vous avez saisi des accents Iso-8859-1)
+.\" groff -man -Tascii -m www prout.1  (cas general )
+.\"
+.TH LS9BOX 1 "2013-02-01" www.ls9box.fr "Manuel utilisateur"
+.SH NAME
+ls9box \- Affichage des informations, états et modification des parametres d'une NeufBox.
+.SH SYNOPSIS
+.B ls9box\ [[\-i|\-\-ip]\ \fIadresse_ip\fP]
+
+.B ls9box\ [[\-a|\-\-all]\ [\-\-adsl]\ [\-\-box]\ [\-\-hotspot]\ [\-\-internet]
+.RS
+.B [\-\-lan]\ [\-\-services]\ [\-\-status]\ [\-\-voip]\ [\-\-wifi]
+.RE
+.RS
+.B [\-\-connect]\ [\-\-services]\ [\-\-status]\ [\-\-voip]\ [\-\-wifi]
+.RE
+
+.B ls9box [\-h|\-\-help]\ [\-v|\-\-version]
+.br
+.SH DESCRIPTION
+.B ls9box
+affiche l'etat et les parametres de la Neuf Box 4 accessible sur le
+reseau local (par defaut, la commande recherche la Neuf Box a l'adresse
+(\fI192\.168\.1\.1\fP).
+.br
+.SH OPTIONS
+.TP
+.B \-a (\-\-all)
+Affiche toutes les informations disponibles
+.TP
+.B \-\-adsl
+Affiche les informations concernant la ligne ADSL
+.TP
+.B \-\-box
+Affiche les specifications de la boite
+.TP
+.B \-\-dns
+Affiche la liste des entrees dns
+.TP
+.B \-\-dyndns
+Affiche les informations du compte dyndns
+.TP
+.B \-\-firewall
+Affiche l'etat du firewall de la box
+.TP
+.B \-\-hotspot
+Affiche l'etat du hotspot wifi
+.TP
+.B \-\-internet
+Affiche les informations de la connexion Internet
+.TP
+.B \-i \fIadresseIP\fP (\-\-ip=\fIadresseIP\fP)
+Modifie l'adresse IP de recherche de la Neuf Box
+.TP
+.B \-\-lan
+Affiche les informations concernant les attachements locaux
+.TP
+.B \-\-services
+Affiche l'etat des services reseaux.
+.TP
+.B \-\-status
+Affiche l'etat des principaux indicateurs (option par defaut)
+.TP
+.B \-\-voip
+Affiche les informations de la telephonie
+.TP
+.B \-\-wifi
+Affiche les informations concernant le wifi
+.TP
+.B \-\-connect
+Methode pour se connecter a la box et avoir acces a toutes les fonctions
+.TP
+.B \-h\ (\-\-help)
+Affiche l'aide en ligne et quitte
+.TP
+.B \-v\ (\-\-version)
+Affiche la version et quitte
+.SH FICHIERS
+.I ~/.9box/9box.ip
+.RS
+Contient l'adresse IP de recherche de la Neuf Box.
+Il est modifie par l'option \fB--ip\fP. Si ce fichier est absent, la valeur
+par defaut est \fI 192.168.1.1\fP.
+.RE
+.I ~/.9box/9box.hash
+.RS
+Contient le token genere par la connection, il sert pour les fonctions de 
+modification et certaines fonctions informatives comme l'historique d'appel
+il perd rapidement validite quand aucune commande n'est passe.
+.SH ENVIRONNEMENT
+.B ls9box
+ne necessite pas de fichier de configuration ou de variable d'environnement.
+.SH VALEURS RETOURNEES
+.TP
+.B 0
+Tout va bien
+.TP
+.B 1
+Aucune reponse a l'adresse IP indiquee
+.TP
+.B 2
+Impossible de se connecter a la machine distante
+.TP
+.B 3
+Reponse incoherente de la machine distante
+.TP
+.B 9
+Parametre incorrect
+.SH DIAGNOSTICS
+Les messages suivants peuvent etre affiches sur la sortie standard d'erreurs :
+.br
+.B "Oups, rien ne repond a cette adresse"
+.RS
+Rien ne repond a l'adresse IP indiquee : Aucune machine en fonction n'a cette
+adresse sur le reseau local ou la machine n'est pas accessible.
+.RE
+.br
+.B "Oups, est-ce une Neuf Box 4 ? (Impossible de s'y connecter)"
+.RS
+Une machine repond a l'adresse indiquee mais il est impossible de s'y connecter
+pour l'interroger. Soit il s'agit d'une Neuf Box non prete ou il ne s'agit pas
+d'une Neuf Box 4.
+.RE
+.br
+.B "Oups, est-ce une Neuf Box 4 ? (Reponse incoherente)"
+.RS
+La connection est etablie mais les reponses retournees sont incoherentes ou non
+connues de
+.B ls9box
+.SH BOGUES
+Aucun de connu... pour l'instant.
+.SH AUTEUR
+Clement MILLET\ <contact@ls9box.fr>
+.SH LICENCE
+Ce programme est libre, vous pouvez le redistribuer et/ou le modifier selon les
+termes de la Licence\ Publique\ Generale GNU (version 2) publiee par
+la Free\ Software\ Foundation.
+.br
+Ce programme est distribue car potentiellement utile, mais SANS AUCUNE GARANTIE,
+ni explicite ni implicite, y compris les garanties de commercialisation ou
+d'adaptation dans un but specifique. Reportez-vous a la Licence\ Publique\ Generale\ GNU
+pour plus de details.
+.br
+Vous devez avoir recu une copie de la Licence\ Publique\ Generale GNU en meme
+temps que ce programme ; si ce n'est pas le cas, ecrivez a la
+Free\ Software\ Foundation,\ Inc., 59 Temple Place, Suite 330, Boston,
+MA 02111-1307, Etats-Unis.
+.SH "SITE INTERNET"
+http://www.ls9box.fr

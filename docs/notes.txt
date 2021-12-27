@@ -1,0 +1,82 @@
+Construction du paquet debian
+=============================
+
+=== Commandes ===
+
+- (make clean_sandbox)
+- (make build_docs)
+- make package
+- cd sandbox/<package>/
+- dh_make -s -c GPL
+- rm -f debian/*.ex debian/*.EX debian/docs debian/README.debian
+- éditer les différents fichiers de debian/
+(voir les fichiers dans ./debian.buildpackage/)
+- dpkg-buildpackage -rfakeroot
+- (alien --to-rpm <package>.deb)
+
+Pour un paquet RPM :
+- alien -kg --to-rpm <package>.deb
+- cd <package>
+- editer le fichier <package>.spec pour ajouter des Requires: <paquet requis>
+apres la section "Group:"
+- rpmbuild -bb <package>.spec
+
+=== FICHIERS debian/ ====
+
+----- Control -----
+Source: ls9box
+Section: net
+Priority: optional
+Maintainer: Clement MILLET <contact@ls9box.fr>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.2
+
+Package: ls9box
+Architecture: all
+Depends: python (>= 2.7), iputils-ping (>= 3:20020927)
+Description: Affichage des informations d'une Neuf Box 4
+ Affiche l'etat et les parametres de la Neuf Box 4
+ accessible sur le reseau local
+ (Box, ADSL, PPP, VOIP, WiFi, HotSpot, TV).
+ Consultez http://www.ls9box.fr pour plus d'information.
+
+
+----- rules -----
+
+build: build-stamp
+
+build-stamp: configure-stamp
+	dh_testdir
+	touch build-stamp
+
+----- copyright -----
+This package was debianized by Clement MILLET <contact@ls9box.fr> on
+Fri,  1 Feb 2013 22:55:34 +0100.
+
+It was downloaded from http://www.ls9box.fr
+
+Upstream Author: Clement MILLET <contact@ls9box.fr>
+
+Copyright: 2013, Clement MILLET <contact@ls9box.fr>
+
+License:
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License.
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+The Debian packaging is (C) 2013, Fabrice ROMAND <contact@ls9box.fr> and
+is licensed under the GPL, see above.
+

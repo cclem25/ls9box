@@ -1,0 +1,15 @@
+Source: ls9box
+Section: net
+Priority: optional
+Maintainer: Clement MILLET <contact@ls9box.fr>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.2
+
+Package: ls9box
+Architecture: all
+Depends: python (>= 2.7), iputils-ping (>= 3:20020927)
+Description: Affichage des informations d'une Neuf Box 4
+ Affiche l'etat et les parametres de la Neuf Box 4
+ accessible sur le reseau local
+ (Box, ADSL, PPP, VOIP, WiFi, HotSpot, TV).
+ Consultez http://www.ls9box.fr pour plus d'information.
